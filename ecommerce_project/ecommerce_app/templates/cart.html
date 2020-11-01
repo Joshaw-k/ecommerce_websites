@@ -14,7 +14,11 @@
 						<th><h5>Items: <strong>{{order.total_cartitem}}</strong></h5></th>
 						<th><h5>Total:<strong> ${{order.total_cartitem_price}}</strong></h5></th>
 						<th>
+							{% if user.is_authenticated %}
 							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+							{% else %}
+							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'login' %}">Login</a>
+							{% endif%}
 						</th>
 					</tr>
 				</table>
@@ -39,9 +43,9 @@
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img class="chg-quantity" src="{% static  'images/arrow-up.png' %}">
+							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
 
-							<img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart" src="{% static  'images/arrow-down.png' %}">
 						</div>
 					</div>
 					<div style="flex:1"><p>${{item.total}}</p></div>

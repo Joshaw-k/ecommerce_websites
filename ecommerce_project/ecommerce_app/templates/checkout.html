@@ -7,10 +7,16 @@
 				<form id="form">
 					<div id="user-info">
 						<div class="form-field">
-							<input required class="form-control" type="text" name="name" placeholder="Name..">
+							<input required class="form-control" type="text" name="username" placeholder="Username..">
 						</div>
 						<div class="form-field">
 							<input required class="form-control" type="email" name="email" placeholder="Email..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="firstname" placeholder="Firstname..">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="lastname" placeholder="Lastname..">
 						</div>
 					</div>
 
@@ -92,9 +98,11 @@
 
 		function submitorder(){
 			let userformdata = {
-				'name':null,
+				'username':null,
 				'email':null,
-				'total':total
+				'total':total,
+				'firstname':null,
+				'lastname':null,
 			}
 			let shippingformdata = {
 				'address':null,
@@ -103,8 +111,10 @@
 				'zipcode':null,
 			}
 			if(user == 'AnonymousUser'){
-				userformdata.name = form.name.value;
+				userformdata.username = form.username.value;
 				userformdata.email = form.email.value;
+				userformdata.firstname = form.firstname.value;
+				userformdata.lastname = form.lastname.value;
 			}
 			if(shipping == 'True'){
 				shippingformdata.address = form.address.value
