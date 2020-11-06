@@ -5,7 +5,9 @@ dry[i].addEventListener('click',function(){
     let action = this.dataset.action;
     console.log('productid:',productid,'action:',action)
     if(user == 'AnonymousUser'){
-        addcookietiem(productid,action)
+        // addcookietiem(productid,action);
+        console.log("button clicked")
+        document.getElementById('message').classList.remove('hidden');
     }
     else{
         updateuseritem(productid,action);

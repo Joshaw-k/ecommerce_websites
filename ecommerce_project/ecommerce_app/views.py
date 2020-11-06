@@ -22,29 +22,29 @@ def index(request):
             'total_cartitem_price':0,
             'total_cartitem':0
         }
-        for i in cart:
-            try:
-                order['total_cartitem'] += cart[i]['quantity']
-                product = Product.objects.get(id=i)
-                total = product.price*cart[i]['quantity']
-                order['total_cartitem_price'] += total
+        # for i in cart:
+        #     try:
+        #         order['total_cartitem'] += cart[i]['quantity']
+        #         product = Product.objects.get(id=i)
+        #         total = product.price*cart[i]['quantity']
+        #         order['total_cartitem_price'] += total
 
-                item = {
-                    'product':{
-                        'id':product.id,
-                        'name':product.name,
-                        'price':product.price,
-                        'imageURL':product.imageURL
+        #         item = {
+        #             'product':{
+        #                 'id':product.id,
+        #                 'name':product.name,
+        #                 'price':product.price,
+        #                 'imageURL':product.imageURL
 
-                    },
-                    'quantity': cart[i]['quantity'],
-                    'total':total
-                }
-                items.append(item)
-                if product.digital == False:
-                    order['shipping'] == True
-            except:
-                pass
+        #             },
+        #             'quantity': cart[i]['quantity'],
+        #             'total':total
+        #         }
+        #         items.append(item)
+        #         if product.digital == False:
+        #             order['shipping'] == True
+        #     except:
+        #         pass
     context = {
         'products':products,
         'order':order

@@ -1,4 +1,5 @@
 {% load static%}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +23,7 @@
         <div class="row">
           <div class="col-sm-4 col-sm-offset-4">
             <div class="login-logo">
-              <img src="images/logo.png">
+              <h1>JUBERRY</h1>
             </div>
             <div class="login-form">
               <div class="page-title text-center">
@@ -32,7 +33,7 @@
                 {% csrf_token %}
                 <div class="form-group">
           
-                  {{form.as_p}}
+                  {{form|crispy}}
                 </div>
                 <input type="submit" name="login" class="btn btn-success btn-block">
               </form>
